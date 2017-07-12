@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="" />
+		<link rel="shortcut icon" href="" />
+		<title>jquery之append与insertBefore插入图片</title>
+		<link rel="stylesheet" href="static/css/quick-layout.css" />
+		<link rel="stylesheet" href="static/css/base.css" />
+		<script type="text/javascript" src="static/js/jquery-1.7.1.min.js" ></script>
+		<style>
+			.action{
+				padding-top: 50px;
+			}
+			.img-tip{
+				width: 120px;
+				height: 120px;
+				line-height: 115px;
+				display: inline-block;
+			}
+			.show-img{
+				padding: 15px;
+			}
+			.img-list{
+				display: inline-block;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page bgf0">
+			<div class="header">
+				<div class="title">
+					<h1 class="pt5">zhionlive</h1>
+					<p class="mt10">by dz</p>
+				</div>
+			</div>
+			<div class="content mt2">
+				<div class="page-title text-center ">jquery之append与insertBefore使用实例</div>
+				<div class="demo">
+					<div class="action">
+						<a id="append" class="btn bg-blue white ml30">append</a>
+						<a id="before" class="btn bg-blue white ml30">insertBefore</a>
+					</div>
+					<div class="show-img">
+						<div class="img-tip bdc bgf5 text-center">显示图片</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer"></div>
+		</div>
+	</body>
+	<script>
+		var fag=0;
+		var picInsert=function(){
+			var picArr=["./static/img/mm1.jpg","./static/img/mm2.jpg","./static/img/mm3.jpg","./static/img/mm4.jpg","./static/img/mm5.jpg","./static/img/mm6.jpg","./static/img/mm7.jpg"];
+			if(fag>=picArr.length){
+				alert("图片显示完")
+				return false;
+			}
+			else{
+				var img=$("<img></img>").attr("src",picArr[fag]).attr("class","img-list");
+				img.insertBefore($(".img-tip"));
+				fag++;
+			}
+		};
+		var appendFunc=function(){
+			var aLink=["./static/img/mm1.jpg","./static/img/mm2.jpg","./static/img/mm3.jpg","./static/img/mm4.jpg","./static/img/mm5.jpg","./static/img/mm6.jpg","./static/img/mm7.jpg"];
+			var picArr=["./static/img/mm1.jpg","./static/img/mm2.jpg","./static/img/mm3.jpg","./static/img/mm4.jpg","./static/img/mm5.jpg","./static/img/mm6.jpg","./static/img/mm7.jpg"];
+			if(fag>=picArr.length){
+				alert("图片显示完")
+				return false;
+			}
+			else{
+				var aObj=$("<a></a>").attr("href",aLink[fag]);
+				var img=$("<img></img>").attr("src",picArr[fag]).attr("class","img-list");
+				aObj.append(img);
+				$('.show-img').append(aObj);
+				fag++;
+			}
+		};
+		$(document).ready(function(){
+			$("#before").click(function(){
+				picInsert();
+			});
+			$("#append").click(function(){
+				appendFunc();
+			});
+		});
+	</script>
+</html>

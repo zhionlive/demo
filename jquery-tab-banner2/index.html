@@ -1,0 +1,183 @@
+<style>
+	ul,li{
+		padding: 0;
+		margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	.container{
+		width:1200px;
+		height: 500px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		overflow: hidden;
+	}
+	.banner{
+		position: relative;
+		overflow: hidden;
+	}
+	.banner li{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.banner li img{
+		width: 100%;
+		/*height: 100%;*/
+		margin: 0 auto;
+	}
+	.btn-ban{
+		height: 50px;
+		position: absolute;
+		left: 0;
+		display: none;
+	}
+	.btn-ban>.prev,.btn-ban>.next{
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		font-size: 14px;
+		color: #eee;
+		background: rgba(40,40,40,0.50);
+		cursor: pointer;
+		font-weight: bold;
+	}
+	.btn-ban .prev:hover,.btn-ban .next:hover{
+		background: rgba(8,8,8,0.50);
+	}
+	.btn-ban>.prev{
+		float: left;
+	}
+	.btn-ban>.next{
+		float: right;
+	}
+	.box{
+		height: 12px;
+		position: absolute;
+		bottom: 30px;
+		overflow: hidden;
+		text-align: center;
+		
+	}
+	.box li{
+		width: 12px;
+		height: 12px;
+		border-radius: 50px;
+		background: rgba(188,185,185,0.50);
+		float: right;
+		cursor: pointer;
+	}
+	.box li:hover{
+		background: #00FA9A !important;
+	}
+</style>
+<div class="container">
+	<ul class="banner">
+		<li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1499241259&di=2ff02fbccfaf02ec79dc4b304444e6ad&imgtype=jpg&er=1&src=http%3A%2F%2Fdl.bizhi.sogou.com%2Fimages%2F2013%2F09%2F29%2F391672.jpg" ></li>
+		<li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498646608817&di=5555cbf15efd661a65578440897827b3&imgtype=0&src=http%3A%2F%2Fpic15.photophoto.cn%2F20100615%2F0006019058815826_b.jpg" ></li>
+		<li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498646647211&di=3514a6cc7bad445901c50b1056498b9f&imgtype=0&src=http%3A%2F%2Fp3.image.hiapk.com%2Fuploads%2Fallimg%2F140814%2F7730-140Q41I921.jpg" ></li>
+		<li><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1498646677725&di=2757bfb1e0b6a7e30086942808bc01db&imgtype=0&src=http%3A%2F%2Fwww.pp3.cn%2Fuploads%2F201409%2F2014091305.jpg" ></li>
+	</ul>
+	<div class="btn-ban">
+		<div class="prev">&lt;</div>
+		<div class="next">&gt;</div>
+	</div>
+	<ul class="box"></ul>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>
+	//准备工作
+	var w = $('.container').width();
+	    h = $('.container').height();
+	    n = $('.banner li').length;
+	    tbtn = (h/2);
+	    wbox = (w/2);
+		wboxleft = (w/4);
+	    blmright = [wbox-(50*n)]/n;
+	    i = 0;
+	$(document).ready(function(){
+		$('.banner').css({width:w,height:h});
+		$('.banner li').css({width:w,height:h});
+		$('.btn-ban').css({width:w*0.9,top:tbtn,marginLeft:w*0.05});
+		$('.box').css({width:wbox,left:wboxleft});
+		for(j=0;j<n;j++){
+			$('.box').append('<li></li>');
+		};
+		$('.box li').css({marginLeft:20});
+	});
+	//初始化
+	$(document).ready(function(){
+		$('.banner li').eq(i).stop(true).fadeIn();
+		$('.banner li').eq(i).siblings().stop(true).fadeOut();
+		$('.box li').eq(i).css({background:'#00FA9A'});
+	    $('.box li').eq(i).siblings().css({background:'rgba(188,185,185,0.50)'});
+	});
+	var time = setInterval('next()',2500);
+	//btn next
+	function next(){
+		i++;
+		if(i>n-1){i=0}
+		$('.banner li').eq(i).stop(true).fadeIn();
+		$('.banner li').eq(i).siblings().stop(true).fadeOut();
+		$('.box li').eq(i).css({background:'#00FA9A'});
+	    $('.box li').eq(i).siblings().css({background:'rgba(188,185,185,0.50)'});
+	};
+	//btn prev
+	function prev(){
+		i--;
+		if(i<0){i=n-1}
+		$('.banner li').eq(i).stop(true).fadeIn();
+		$('.banner li').eq(i).siblings().stop(true).fadeOut();
+		$('.box li').eq(i).css({background:'#00FA9A'});
+	    $('.box li').eq(i).siblings().css({background:'rgba(188,185,185,0.50)'});
+	};
+	//btn
+	$(document).ready(function(){
+		$('.prev').click(function(){
+			prev();
+			clearInterval(time);
+		    time=setInterval('next()',2500);
+		});
+		$('.next').click(function(){
+			next();
+			clearInterval(time);
+		    time=setInterval('next()',2500);
+		});
+	});
+	//box li
+	$(document).ready(function(e){
+		$('.box li').click(function(){
+			var m = $(this).index();
+			$('.box li').eq(m).css({background:'#00FA9A'});
+			$('.box li').eq(m).siblings().css({background:'rgba(188,185,185,0.50)'});
+			$('.banner li').eq(m).stop(true).fadeIn();
+		        $('.banner li').eq(m).siblings().stop(true).fadeOut();
+                        i = m;
+			clearInterval(time);
+		    time=setInterval('next()',2500);		
+		});
+	});
+	//hover停止
+	$(document).ready(function(){
+		$('.banner').hover(function(){
+			clearInterval(time);
+		},function(){
+			time=setInterval('next()',2500);
+		});
+	});
+	$(document).ready(function(){
+		$('.banner').hover(function(){
+			$('.btn-ban').stop(true).fadeIn();
+		},function(){
+			$('.btn-ban').stop(true).fadeOut();
+		});
+		$('.btn-ban').hover(function(){
+			$('.btn-ban').stop(true).fadeIn();
+		},function(){
+			$('btn-ban').stop(true).fadeOut();
+		});
+	});
+</script>

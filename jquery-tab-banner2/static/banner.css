@@ -1,0 +1,74 @@
+ul,li{
+		padding: 0;
+		margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	.container{
+		width:1349px;
+		height: 420px;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		overflow: hidden;
+	}
+	.banner{
+		position: relative;
+		overflow: hidden;
+	}
+	.banner li{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.banner li img{
+		width: 100%;
+		/*height: 100%;*/
+		margin: 0 auto;
+	}
+	.btn-ban{
+		height: 50px;
+		position: absolute;
+		left: 0;
+		display: none;
+	}
+	.btn-ban>.prev,.btn-ban>.next{
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		font-size: 14px;
+		color: #eee;
+		background: rgba(40,40,40,0.50);
+		cursor: pointer;
+		font-weight: bold;
+	}
+	.btn-ban .prev:hover,.btn-ban .next:hover{
+		background: rgba(8,8,8,0.50);
+	}
+	.btn-ban>.prev{
+		float: left;
+	}
+	.btn-ban>.next{
+		float: right;
+	}
+	.box{
+		height: 12px;
+		position: absolute;
+		bottom: 30px;
+		overflow: hidden;
+		text-align: center;
+		
+	}
+	.box li{
+		width: 12px;
+		height: 12px;
+		border-radius: 50px;
+		background: rgba(188,185,185,0.50);
+		float: right;
+		cursor: pointer;
+	}
+	.box li:hover{
+		background: #00FA9A !important;
+	}

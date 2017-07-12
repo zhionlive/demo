@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="zdz" />
+		<title>鼠标经过图片放大</title>
+		<style>
+			.page{
+				width: 790px;
+				margin: 30px auto;
+				padding: 5px;
+			}
+			.page:after{
+				clear: both;
+			}
+			.i-list{
+				float: left;
+				padding: 6.666px;
+				background: #333;
+			}
+			.i-list img{
+				width: 250px;
+			}
+			.i-list img:hover{
+				transform: scale(1.5,1.5);
+				transition: 0.5s transform;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<div class="i-list"><img src="img/iceberg_1x.jpg"/></div>
+			<div class="i-list"><img src="img/igloo-800_1x.jpg"/></div>
+			<div class="i-list"><img src="img/landscape-test-1_1x.jpg"/></div>
+			<div class="i-list"><img src="img/render1_1x.jpg"/></div>
+			<div class="i-list"><img src="img/space_1x.jpg"/></div>
+			<div class="i-list"><img src="img/trees_1x.jpg"/></div>
+		</div>
+	</body>
+</html>

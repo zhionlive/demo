@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="" />
+		<link rel="shortcut icon" href="" />
+		<title>jQuery幻灯片</title>
+		<link rel="stylesheet" href="static/css/quick-layout.css" />
+		<link rel="stylesheet" href="static/css/base.css" />
+		<style>
+			html,body,.page{
+				width: 100%;
+			}
+			.demo{
+				padding: 15px;
+				width: 830px;
+				margin:0 auto;
+			}
+			.item{
+				float: left;
+			}
+			.warp{
+				width: 810px;
+				height: 405px;
+				overflow: hidden;
+				position: relative;
+			}
+			.img-sm-item{
+				float: left;
+				width: 140px;
+				height: 100px;
+				overflow: hidden;
+				margin: 10px;
+			}
+			.img-active{
+				border: 2px solid #ff851b;
+			}
+			.img-sm-item img{
+				width: 100%;
+				height: 100%;
+			}
+			.img-list{
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page bgf0">
+			<div class="header">
+				<div class="title">
+					<h1 class="pt5">zhionlive</h1>
+					<p class="mt10">by dz</p>
+				</div>
+			</div>
+			<div class="content mt2">
+				<div class="page-title text-center ">jQuery幻灯片</div>
+				<div class="demo">
+					<div class="warp">
+					<ul id="img-list" class="img-list clear-fix">
+						<li class="item"><img src="static/img/4Wxz-fyhneam5064241.jpg"/></li>
+						<li class="item"><img src="static/img/CWAt-fyhneam5289029.jpg"/></li>
+						<li class="item"><img src="static/img/Mqlj-fyhneam5371511.jpg"/></li>
+						<li class="item"><img src="static/img/OCq--fyhneam5390724.jpg"/></li>
+						<li class="item"><img src="static/img/OoqB-fyhneam5288380.jpg"/></li>
+					</ul>
+					</div>
+					<div>
+						<ul  class="img-sm clear-fix">
+							<li class="img-sm-item img-active"><img src="static/img/4Wxz-fyhneam5064241.jpg"/></li>
+							<li class="img-sm-item"><img src="static/img/CWAt-fyhneam5289029.jpg"/></li>
+							<li class="img-sm-item"><img src="static/img/Mqlj-fyhneam5371511.jpg"/></li>
+							<li class="img-sm-item"><img src="static/img/OCq--fyhneam5390724.jpg"/></li>
+							<li class="img-sm-item"><img src="static/img/OoqB-fyhneam5288380.jpg"/></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="static/js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				var length=$("#img-list").children().length;
+				$("#img-list").width(length*810);
+			});
+			$(function(){
+				$(".img-sm-item").click(function(){
+					var i=$(this).index();
+//					alert(i);
+					$("#img-list").animate({"left":-i*810+"px"});
+					$(".img-sm-item").not($(this)).removeClass("img-active");
+					$(this).addClass("img-active");
+				});
+			});
+		</script>
+	</body>
+</html>

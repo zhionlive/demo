@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="author" content="" />
+		<link rel="shortcut icon" href="" />
+		<title>jquery之append与insertBefore插入图片</title>
+		<link rel="stylesheet" href="static/css/quick-layout.css" />
+		<link rel="stylesheet" href="static/css/base.css" />
+		<style>
+			html,body,.page{
+				width: 100%;
+			}
+			.demo{
+				padding: 15px;
+			}
+			.item{
+				float: left;
+				height: 480px;
+				width: 180px;
+				transition: width 0.5s;
+				-moz-transition: width 0.5s;	/* Firefox 4 */
+				-webkit-transition: width 0.5s;	/* Safari 和 Chrome */
+				-o-transition: width 0.5s;	
+			}
+			.img-1{
+				background: url(static/img/1.jpg);
+			}
+			.img-2{
+				background: url(static/img/2.jpg);
+			}
+			.img-3{
+				background: url(static/img/3.jpg);
+			}
+			.img-4{
+				background: url(static/img/4.jpg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page bgf0">
+			<div class="header">
+				<div class="title">
+					<h1 class="pt5">zhionlive</h1>
+					<p class="mt10">by dz</p>
+				</div>
+			</div>
+			<div class="content mt2">
+				<div class="page-title text-center ">jQuery之图片关联伸缩效果</div>
+				<div class="demo">
+					<ul class="img-list clear-fix">
+						<li class="item img-1">1213</li>
+						<li class="item img-2">1213</li>
+						<li class="item img-3">1213</li>
+						<li class="item img-4">1213</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="static/js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(".item").hover(function(){
+				$(this).animate({width:"480px"},1);
+				$(".item").not($(this)).animate({width:"180px"},1);
+			});
+			$(".item").mouseout(function(){
+				$(this).animate({width:"180px"},1);
+			});
+		</script>
+	</body>
+</html>
